@@ -3,6 +3,7 @@
 #include <string>
 #include <array>
 #include <random>
+#include <sstream>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -22,24 +23,23 @@ auto GetRandomNum(const int MIN, const int MAX) {
 
 void DrawBattlefield(const std::string grid[][GridSize])
 {
+   std::ostringstream ostream;
+
    system("cls");
-   cout
+   ostream
       << ">>> BATTLESHIP <<<\n\n\n"
-      << "This is your battlefield. Search and destroy " << ShipsNum << " ships.\n"
-      << endl;
+      << "This is your battlefield. Search and destroy " << ShipsNum << " ships.\n";
 
    for (std::size_t row{}; row < GridSize; ++row) {
-      cout << '|' << std::flush;
+      ostream << '|';
       for (std::size_t col{}; col < GridSize; ++col) {
-         cout << std::setw(2) << grid[row][col] << "|" << std::flush;
+         ostream << std::setw(2) << grid[row][col] << "|";
       }
-      cout << endl;
+      ostream << '\n';
    }
 
-   cout
-      << "\nHits: " << Hits
-      << " | Turns: " << Turns
-      << endl;
+   ostream << "\nHits: " << Hits << " | Turns: " << Turns;
+   cout << ostream.str() << endl;
 }
 
 bool GetFieldPos(
