@@ -43,7 +43,7 @@ void DrawBattlefield(const std::string grid[][GridSize])
 }
 
 bool GetFieldPos(
-   const std::string field_name,
+   const std::string& field_name,
    const std::string grid[][GridSize],
    std::array<char, 2>& field_pos)
 {
